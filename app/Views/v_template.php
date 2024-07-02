@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </ul>
                                     </li>
                                     <li class="nav-item">
-                                          <a href="#" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>"></a>">
+                                          <a href=" <?= base_url {Admin/Setting} ?>" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>"></a>">
                                           <i class="nav-icon fas fa-cogs"></i>
                                           <p>
                                                 Setting
@@ -154,12 +154,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="container-fluid">
                               <div class="row mb-2">
                                     <div class="col-sm-6">
-                                          <h1 class="m-0">Starter Page</h1>
+                                          <h1 class="m-0"><?= $judul?></h1>
                                     </div><!-- /.col -->
                                     <div class="col-sm-6">
                                           <ol class="breadcrumb float-sm-right">
-                                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                <li class="breadcrumb-item active">Starter Page</li>
+                                                <li class="breadcrumb-item"><a href="#"><?= $judul?></a></li>
+                                                <li class="breadcrumb-item active"><?= $subjudul?></li>
                                           </ol>
                                     </div><!-- /.col -->
                               </div><!-- /.row -->
