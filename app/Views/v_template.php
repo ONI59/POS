@@ -96,8 +96,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </p>
                                           </a>
                                     </li>
+<<<<<<< HEAD
+                                    <li class="nav-item <?= $menu == 'masterdata' ? 'active' : '' ?>">
+                                          <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
+=======
                                     <li class="nav-item menu-open">
                                           <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
+>>>>>>> 2dbf563731b854513843d65f9677adaad87fb1b1
                                                 <i class="nav-icon fas fa-th"></i>
                                                 <p>
                                                       Master Data
@@ -106,25 +111,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </a>
                                           <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                      <a href="#" class="nav-link active">
+                                                      <a href="<? base_url(Produk) ?>" class="nav-link">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Produk</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="#" class="nav-link">
+                                                      <a href="<? base_url(Kategori) ?>" class="nav-link">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Kategori</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="#" class="nav-link">
+                                                      <a href="<? base_url(Satuan) ?>" class="nav-link">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Satuan</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="#" class="nav-link">
+                                                      <a href="<? base_url(User) ?>" class="nav-link">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>User</p>
                                                       </a>
