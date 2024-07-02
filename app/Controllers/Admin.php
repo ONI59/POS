@@ -27,4 +27,6 @@ class Admin extends BaseController
         "page" => "v_setting",
     ];
     return view("v_template", $data);
+
+    }
 }
