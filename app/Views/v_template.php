@@ -132,10 +132,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </ul>
                                     </li>
                                     <li class="nav-item">
-                                          <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>"></a>">
+                                          <a href="#" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>"></a>">
                                           <i class="nav-icon fas fa-cogs"></i>
                                           <p>
                                                 Setting
+                                                <span class="right badge badge-danger" >New</span>
 
                                           </p>
                                           </a>

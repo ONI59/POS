@@ -8,7 +8,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Produk extends BaseController
 {
     public function index()
-    {$data = [
+    {
+        $data = [
         "judul" => "Master Data",
         "subjudul" => "Produk",
         "menu" => "masterdata",
@@ -16,6 +17,5 @@ class Produk extends BaseController
         "page" => "v_produk",
     ];
     return view("v_template", $data);
-        //
     }
 }
