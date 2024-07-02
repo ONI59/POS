@@ -6,6 +6,9 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('v_template');
+        $data = [
+            'page' => 'v_home',
+        ];
+        return view('v_template', $data);
     }
 }
