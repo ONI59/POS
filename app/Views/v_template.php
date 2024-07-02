@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </a>
                                     </li>
 <<<<<<< HEAD
-                                    <li class="nav-item <?= $menu == 'masterdata' ? 'active' : '' ?>">
+                                    <li class="nav-item <?= $menu == 'masterdata' ? 'menu-open' : '' ?>">
                                           <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
 =======
                                     <li class="nav-item menu-open">
