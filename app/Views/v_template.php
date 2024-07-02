@@ -96,8 +96,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </p>
                                           </a>
                                     </li>
-                                    <li class="nav-item <?= $menu == 'masterdata' ? 'menu-open' : '' ?>">
-                                          <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
+                                    <li class="nav-item">
+                                          <a href="<?= $menu == 'masterdata' ? 'menu-open' : '' ?>" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
                                                 <i class="nav-icon fas fa-th"></i>
                                                 <p>
                                                       Master Data
@@ -106,38 +106,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </a>
                                           <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Produk) ?>" class="nav-link <?= $submenu == 'produk' ? 'active' : '' ?>"></a>"
-                                                      <i class="far fa-circle nav-icon"></i>
-                                                      <p>Produk</p>
+                                                      <a href="<?= base_url('Produk') ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>
+                                                                  Produk
+                                                            </p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Kategori) ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>"></a>">
-                                                      <i class="far fa-circle nav-icon"></i>
-                                                      <p>Kategori</p>
+                                                      <a href="<?= base_url('Kategori') ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>
+                                                                  Kategori
+                                                            </p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Satuan) ?>" class="nav-link <?= $submenu == 'satuan' ? 'active' : '' ?>"></a>">
-                                                      <i class="far fa-circle nav-icon"></i>
-                                                      <p>Satuan</p>
+                                                      <a href="<?= base_url('Satuan') ?>" class="nav-link <?= $submenu == 'satuan' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>
+                                                                  Satuan
+                                                            </p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(User) ?>" class="nav-link <?= $submenu == 'user' ? 'active' : '' ?>"></a>">
-                                                      <i class="far fa-circle nav-icon"></i>
-                                                      <p>User</p>
+                                                      <a href="<?= base_url('User') ?>" class="nav-link <?= $submenu == 'user' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>
+                                                                  User
+                                                            </p>
                                                       </a>
                                                 </li>
                                           </ul>
                                     </li>
                                     <li class="nav-item">
-                                          <a href=" <?= base_url {Admin/Setting} ?>" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>"></a>">
-                                          <i class="nav-icon fas fa-cogs"></i>
-                                          <p>
-                                                Setting
-
-                                          </p>
+                                          <a href=" <?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p>
+                                                      Setting
+                                                </p>
                                           </a>
                                     </li>
                               </ul>
@@ -154,12 +161,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="container-fluid">
                               <div class="row mb-2">
                                     <div class="col-sm-6">
-                                          <h1 class="m-0"><?= $judul?></h1>
+                                          <h1 class="m-0"><?= $judul ?></h1>
                                     </div><!-- /.col -->
                                     <div class="col-sm-6">
                                           <ol class="breadcrumb float-sm-right">
-                                                <li class="breadcrumb-item"><a href="#"><?= $judul?></a></li>
-                                                <li class="breadcrumb-item active"><?= $subjudul?></li>
+                                                <li class="breadcrumb-item"><a href="#"><?= $judul ?></a></li>
+                                                <li class="breadcrumb-item active"><?= $subjudul ?></li>
                                           </ol>
                                     </div><!-- /.col -->
                               </div><!-- /.row -->

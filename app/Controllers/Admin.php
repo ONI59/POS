@@ -17,16 +17,16 @@ class Admin extends BaseController
         ];
         return view("v_template", $data);
     }
-    
-    public function Setting()
-    {$data = [
-        "judul" => "Setting",
-        "subjudul" => "",
-        "menu" => "setting",
-        "submenu" => "",
-        "page" => "v_setting",
-    ];
-    return view("v_template", $data);
 
+    public function Setting()
+    {
+        $data = [
+            "judul" => "Setting",
+            "subjudul" => "",
+            "menu" => "setting",
+            "submenu" => "",
+            "page" => "v_setting",
+        ];
+        return view("v_template", $data);
     }
 }
