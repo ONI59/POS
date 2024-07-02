@@ -111,25 +111,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </a>
                                           <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Produk) ?>" class="nav-link">
+                                                      <a href="<? base_url(Produk) ?>" class="nav-link <?= $submenu == 'produk' ? 'active' : '' ?>"></a>" 
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Produk</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Kategori) ?>" class="nav-link">
+                                                      <a href="<? base_url(Kategori) ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>"></a>">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Kategori</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(Satuan) ?>" class="nav-link">
+                                                      <a href="<? base_url(Satuan) ?>" class="nav-link <?= $submenu == 'satuan' ? 'active' : '' ?>"></a>">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Satuan</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
-                                                      <a href="<? base_url(User) ?>" class="nav-link">
+                                                      <a href="<? base_url(User) ?>" class="nav-link <?= $submenu == 'user' ? 'active' : '' ?>"></a>">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>User</p>
                                                       </a>
@@ -137,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </ul>
                                     </li>
                                     <li class="nav-item">
-                                          <a href="#" class="nav-link">
+                                          <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>"></a>">
                                                 <i class="nav-icon fas fa-cogs"></i>
                                                 <p>
                                                       Setting
