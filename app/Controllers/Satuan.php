@@ -7,21 +7,23 @@ use App\Models\ModelSatuan;
 
 class Satuan extends BaseController
 {
+
     public function __construct()
     {
         $this->ModelSatuan = new ModelSatuan();
     }
+
     public function index()
     {
         $data = [
-            "judul" => "Master Data",
-            "subjudul" => "Satuan",
-            "menu" => "masterdata",
-            "submenu" => "satuan",
-            "page" => "v_satuan",
-            "satuan" => $this->ModelSatuan->AllData(),
+            'judul' => 'Master Data',
+            'subjudul' => 'Satuan',
+            'menu' => 'masterdata',
+            'submenu' => 'satuan',
+            'page' => 'v_satuan',
+            'satuan' => $this->ModelSatuan->AllData(),
         ];
-        return view("v_template", $data);
+        return view('v_template', $data);
     }
 
     public function InsertData()
@@ -39,7 +41,7 @@ class Satuan extends BaseController
             'nama_satuan' => $this->request->getPost('nama_satuan')
         ];
         $this->ModelSatuan->UpdateData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Perbaharui !!');
+        session()->setFlashdata('pesan', 'Data Berhasil Diupdate !!');
         return redirect()->to('Satuan');
     }
 
@@ -49,7 +51,7 @@ class Satuan extends BaseController
             'id_satuan' => $id_satuan,
         ];
         $this->ModelSatuan->DeleteData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus !!');
+        session()->setFlashdata('pesan', 'Data Berhasil Duhapus !!');
         return redirect()->to('Satuan');
     }
 }
