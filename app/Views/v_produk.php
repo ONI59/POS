@@ -15,6 +15,12 @@
                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                               <h5><i class="icon fas fa-check"></i>
                                     <?= session()->getFlashdata('pesan') ?>
+                                    
+                                    <?php<?
+                                    $errors = session()->getFlashdata('errors');
+                                    if(!empty( $errors)) { ?> 
+                                    <?php}
+                                    ?>
                               </h5>
                         </div>
                   <?php endif; ?>
@@ -126,7 +132,7 @@
 
                               <div class="form-group">
                                     <label for="">Stok</label>
-                                    <input name="stok" class="form-control" placeholder="Stok" required>
+                                    <input name="stok" type="number" class="form-control" placeholder="Stok" required>
                               </div>
 
                         </div>
