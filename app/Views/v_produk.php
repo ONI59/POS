@@ -110,7 +110,7 @@
                                           <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                           </div>
-                                          <input name="harga_beli" class="form-control" placeholder="Harga Jual" required>
+                                          <input name="harga_beli" class="form-control" placeholder="Harga Beli" required>
                                     </div>
                               </div>
 
@@ -159,5 +159,17 @@
                         "autoWidth": false,
                         "responsive": true,
                   });
+                  new AutoNumeric('#harga_beli', {
+                        currencySymbol: 'Rp ',
+                        decimalCharacter: '.',
+                        digitGroupSeparator: ',',
+                  });
+
+                  new AutoNumeric('#harga_jual', {
+                        currencySymbol: 'Rp ',
+                        decimalCharacter: ',',
+                        digitGroupSeparator: '.',
+                  });
+
             });
       </script>
