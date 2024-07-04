@@ -7,27 +7,33 @@ use App\Models\ModelKategori;
 
 class Kategori extends BaseController
 {
+
     public function __construct()
     {
         $this->ModelKategori = new ModelKategori();
     }
+
     public function index()
     {
         $data = [
-            "judul" => "Master Data",
-            "subjudul" => "kategori",
-            "menu" => "masterdata",
-            "submenu" => "kategori",
-            "page" => "v_kategori",
-            "kategori" =>  $this->ModelKategori->AllData(),
+            'judul' => 'Master Data',
+            'subjudul' => 'Kategori',
+            'menu' => 'masterdata',
+            'submenu' => 'kategori',
+            'page' => 'v_kategori',
+            'kategori' => $this->ModelKategori->AllData(),
         ];
-        return view("v_template", $data);
+        return view('v_template', $data);
     }
+
     public function InsertData()
     {
         $data = ['nama_kategori' => $this->request->getPost('nama_kategori')];
         $this->ModelKategori->InsertData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan !!');
+        session()->setFlashdata('pesan', "Toast.fire({
+            icon: 'success',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+        })");
         return redirect()->to('Kategori');
     }
 
@@ -38,7 +44,7 @@ class Kategori extends BaseController
             'nama_kategori' => $this->request->getPost('nama_kategori')
         ];
         $this->ModelKategori->UpdateData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Perbaharui !!');
+        session()->setFlashdata('pesan', 'Data Berhasil Diupdate !!');
         return redirect()->to('Kategori');
     }
 
@@ -48,7 +54,7 @@ class Kategori extends BaseController
             'id_kategori' => $id_kategori,
         ];
         $this->ModelKategori->DeleteData($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus !!');
+        session()->setFlashdata('pesan', 'Data Berhasil Duhapus !!');
         return redirect()->to('Kategori');
     }
 }
