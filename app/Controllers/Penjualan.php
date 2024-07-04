@@ -7,11 +7,11 @@ use App\Models\ModelPenjualan;
 
 class Penjualan extends BaseController
 {
-    protected $modelPenjualan;
+    protected $ModelPenjualan;
 
     public function __construct()
     {
-        $this->modelPenjualan = new ModelPenjualan();
+        $this->ModelPenjualan = new ModelPenjualan();
     }
 
     public function index()
@@ -20,10 +20,10 @@ class Penjualan extends BaseController
 
         $data = [
             'judul' => 'Penjualan',
-            'no_faktur' => $this->modelPenjualan->NoFaktur(),
+            'no_faktur' => $this->ModelPenjualan->NoFaktur(),
             'cart' => $cart->contents(),
             'grand_total' => $cart->total(),
-            'produk' => $this->modelPenjualan->AllProduk(),
+            'produk' => $this->ModelPenjualan->AllProduk(),
         ];
         return view('v_penjualan', $data);
     }
@@ -31,7 +31,7 @@ class Penjualan extends BaseController
     public function CekProduk()
     {
         $kode_produk = $this->request->getPost('kode_produk');
-        $produk = $this->modelPenjualan->CekProduk($kode_produk);
+        $produk = $this->ModelPenjualan->CekProduk($kode_produk);
         if ($produk == null) {
             $data = [
                 'nama_produk' => '',
@@ -95,7 +95,7 @@ class Penjualan extends BaseController
     {
         $cart = \Config\Services::cart();
         $produk = $cart->contents();
-        $no_faktur = $this->modelPenjualan->NoFaktur();
+        $no_faktur = $this->ModelPenjualan->NoFaktur();
         $dibayar = str_replace(",", "", $this->request->getPost('dibayar'));
         $kembalian = str_replace(",", "", $this->request->getPost('kembalian'));
 
@@ -111,7 +111,7 @@ class Penjualan extends BaseController
                     'total_harga' => $value['subtotal'],
                     'untung' => ($value['price'] - $value['options']['modal']) * $value['qty']
                 ];
-                $this->modelPenjualan->InsertRinciJual($data);
+                $this->ModelPenjualan->InsertRinciJual($data);
             }
 
             // Simpan ke tbl_jual
@@ -124,7 +124,7 @@ class Penjualan extends BaseController
                 'kembalian' => $kembalian,
                 'id_user' => session()->get('id_user'),
             ];
-            $this->modelPenjualan->InsertJual($data);
+            $this->ModelPenjualan->InsertJual($data);
 
             // Hapus keranjang
             $cart->destroy();
