@@ -263,13 +263,11 @@
             });
 
             new AutoNumeric('#harga_beli', {
-                  currencySymbol: 'Rp ',
                   decimalCharacter: ',',
                   digitGroupSeparator: '.',
             });
 
             new AutoNumeric('#harga_jual', {
-                  currencySymbol: 'Rp ',
                   decimalCharacter: ',',
                   digitGroupSeparator: '.',
             });
