@@ -16,11 +16,11 @@
                               <h5><i class="icon fas fa-check"></i>
                                     <?= session()->getFlashdata('pesan') ?>
                                     
-                                    <?php<?
-                                    $errors = session()->getFlashdata('errors');
+                                    <?php
+                                    $errors = session()->getFlashdata('errors')
                                     if(!empty( $errors)) { ?> 
                                     <?php}
-                                    ?>
+                                    >? 
                               </h5>
                         </div>
                   <?php endif; ?>
@@ -116,7 +116,7 @@
                                           <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                           </div>
-                                          <input name="harga_beli" class="form-control" placeholder="Harga Jual" required>
+                                          <input name="harga_beli" id= 'harga_beli' class="form-control" placeholder="Harga Jual" required>
                                     </div>
                               </div>
 
@@ -126,7 +126,7 @@
                                           <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                           </div>
-                                          <input name="harga_jual" class="form-control" placeholder="Harga Jual" required>
+                                          <input name="harga_jual" id= 'harga_jual' class="form-control" placeholder="Harga Jual" required>
                                     </div>
                               </div>
 
@@ -165,5 +165,9 @@
                         "autoWidth": false,
                         "responsive": true,
                   });
+                  new AutoNumeric('#harga_beli', { currencySymbol : '$' });
             });
+
+            new AutoNumeric('#harga_jual', { currencySymbol : '$' });
+      });
       </script>
