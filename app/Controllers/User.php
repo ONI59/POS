@@ -28,7 +28,7 @@ class User extends BaseController
         $data = [
             'nama_user' => $this->request->getPost('nama_user'),
             'email' => $this->request->getPost('email'),
-            'password' => sha1($this->request->getPost('password')),
+            'password' => $this->request->getPost('password'),
             'level' => $this->request->getPost('level'),
         ];
         $this->ModelUser->InsertData($data);
