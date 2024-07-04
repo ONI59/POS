@@ -14,18 +14,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
       <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/fontawesome-free/css/all.min.css">
-      <!-- Data tabel -->
+      <!-- SweetAlert2 -->
+      <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+      <!-- DataTables -->
       <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
       <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
       <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
       <!-- Theme style -->
       <link rel="stylesheet" href="<?= base_url('AdminLTE') ?>/dist/css/adminlte.min.css">
+
+
+
       <!-- jQuery -->
       <script src="<?= base_url('AdminLTE') ?>/plugins/jquery/jquery.min.js"></script>
       <!-- Bootstrap 4 -->
       <script src="<?= base_url('AdminLTE') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- DataTables & Plugins -->
+      <!-- SweetAlert2 -->
+      <script src="<?= base_url('AdminLTE') ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
+      <!-- DataTables  & Plugins -->
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables/jquery.dataTables.min.js"></script>
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -38,12 +45,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
       <script src="<?= base_url('AdminLTE') ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-      <!-- Cart Js -->
+
+      <!-- ChartJS -->
       <script src="<?= base_url('AdminLTE') ?>/plugins/chart.js/Chart.min.js"></script>
+
       <!-- AdminLTE App -->
       <script src="<?= base_url('AdminLTE') ?>/dist/js/adminlte.min.js"></script>
-      <!-- Auto Numerik -->
-      <script src=" <?= base_url('autoNumeric') ?>/src/AutoNumeric.js"></script>
+
+      <!-- Auto Numeric -->
+      <script src="<?= base_url('autoNumeric') ?>/src/AutoNumeric.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -67,14 +77,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- Right navbar links -->
                   <ul class="navbar-nav ml-auto">
 
+
+
+
                         <li class="nav-item">
                               <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                                     <i class="fas fa-expand-arrows-alt"></i>
                               </a>
                         </li>
                         <li class="nav-item">
-                              <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                                    <i class="fas fa-th-large"></i>
+                              <a class="nav-link" href="<?= base_url('Home/Logout') ?>">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
                               </a>
                         </li>
                   </ul>
@@ -97,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <img src="<?= base_url('AdminLTE') ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                               </div>
                               <div class="info">
-                                    <a href="#" class="d-block">Roni Hidayat</a>
+                                    <a href="#" class="d-block"><?= session()->get('nama_user') ?></a>
                               </div>
                         </div>
 
@@ -107,25 +120,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                                     <li class="nav-item">
-                                          <a href="<?= base_url('admin') ?>" class="nav-link <?= $menu == 'dashboard' ? 'active' : '' ?>">
+                                          <a href="<?= base_url('Admin') ?>" class="nav-link <?= $menu == 'dashboard' ? 'active' : '' ?>">
                                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                                 <p>
-                                                      Dasboard
-
+                                                      Dashboard
                                                 </p>
                                           </a>
                                     </li>
+
                                     <li class="nav-item">
-                                          <a href="#" class="nav-link">
-                                                <i class="nav-icon fas fa-regular fa-cash-register"></i>
+                                          <a href="<?= base_url('Penjualan') ?>" class="nav-link">
+                                                <i class="nav-icon fas fa-cash-register"></i>
                                                 <p>
                                                       Penjualan
-
                                                 </p>
                                           </a>
                                     </li>
-                                    <li class="nav-item">
-                                          <a href="<?= $menu == 'masterdata' ? 'menu-open' : '' ?>" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
+
+                                    <li class="nav-item <?= $menu == 'masterdata' ? 'menu-open' : '' ?>">
+                                          <a href="#" class="nav-link <?= $menu == 'masterdata' ? 'active' : '' ?>">
                                                 <i class="nav-icon fas fa-th"></i>
                                                 <p>
                                                       Master Data
@@ -134,44 +147,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                           </a>
                                           <ul class="nav nav-treeview">
                                                 <li class="nav-item">
-                                                      <a href="<?= base_url('Produk') ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>">
+                                                      <a href="<?= base_url('Produk') ?>" class="nav-link <?= $submenu == 'produk' ? 'active' : '' ?>">
                                                             <i class="far fa-circle nav-icon"></i>
-                                                            <p>
-                                                                  Produk
-                                                            </p>
+                                                            <p>Produk</p>
                                                       </a>
                                                 </li>
                                                 <li class="nav-item">
                                                       <a href="<?= base_url('Kategori') ?>" class="nav-link <?= $submenu == 'kategori' ? 'active' : '' ?>">
                                                             <i class="far fa-circle nav-icon"></i>
-                                                            <p>
-                                                                  Kategori
-                                                            </p>
+                                                            <p>Kategori</p>
                                                       </a>
                                                 </li>
+
                                                 <li class="nav-item">
                                                       <a href="<?= base_url('Satuan') ?>" class="nav-link <?= $submenu == 'satuan' ? 'active' : '' ?>">
                                                             <i class="far fa-circle nav-icon"></i>
-                                                            <p>
-                                                                  Satuan
-                                                            </p>
+                                                            <p>Satuan</p>
                                                       </a>
                                                 </li>
+
                                                 <li class="nav-item">
                                                       <a href="<?= base_url('User') ?>" class="nav-link <?= $submenu == 'user' ? 'active' : '' ?>">
                                                             <i class="far fa-circle nav-icon"></i>
-                                                            <p>
-                                                                  User
-                                                            </p>
+                                                            <p>User</p>
                                                       </a>
                                                 </li>
                                           </ul>
                                     </li>
-                                    <li class="nav-item">
-                                          <a href=" <?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>">
-                                                <i class="nav-icon fas fa-cogs"></i>
+
+                                    <li class="nav-item <?= $menu == 'laporan' ? 'menu-open' : '' ?>">
+                                          <a href="#" class="nav-link <?= $menu == 'laporan' ? 'active' : '' ?>">
+                                                <i class="nav-icon fas fa-file-alt"></i>
                                                 <p>
-                                                      Setting
+                                                      Laporan
+                                                      <i class="right fas fa-angle-left"></i>
+                                                </p>
+                                          </a>
+                                          <ul class="nav nav-treeview">
+                                                <li class="nav-item">
+                                                      <a href="<?= base_url('Laporan/LaporanHarian') ?>" class="nav-link <?= $submenu == 'laporan-harian' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Laporan Harian</p>
+                                                      </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                      <a href="<?= base_url('Laporan/LaporanBulanan') ?>" class="nav-link <?= $submenu == 'laporan-bulanan' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Laporan Bulanan</p>
+                                                      </a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                      <a href="<?= base_url('Laporan/LaporanTahunan') ?>" class="nav-link <?= $submenu == 'laporan-tahunan' ? 'active' : '' ?>">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Laporan Tahunan</p>
+                                                      </a>
+                                                </li>
+                                          </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                          <a href="<?= base_url('Admin/Setting') ?>" class="nav-link <?= $menu == 'setting' ? 'active' : '' ?>">
+                                                <i class="nav-icon fas fa-cogs"></i>
+                                                <p> Setting
+
                                                 </p>
                                           </a>
                                     </li>
@@ -207,11 +246,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="container-fluid">
                               <div class="row">
 
-                                    <!-- Isi Konten -->
+                                    <!-- isi Konten -->
                                     <?php
                                     if ($page) {
                                           echo view($page);
                                     }
+
                                     ?>
                                     <!-- /.col-md-6 -->
                               </div>
@@ -221,6 +261,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
+
+
 
             <!-- Main Footer -->
             <footer class="main-footer">
