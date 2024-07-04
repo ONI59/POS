@@ -34,4 +34,8 @@ class Produk extends BaseController
         ];
         return view('v_template', $data);
     }
+
+    public function InsertData()
+    {   
+    }
 }
