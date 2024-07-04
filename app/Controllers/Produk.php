@@ -36,4 +36,6 @@ class Produk extends BaseController
     }
 
     public function InsertData()
+    {   
+    }
 }
