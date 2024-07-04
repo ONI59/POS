@@ -5,9 +5,9 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ModelPenjualan;
 
+
 class Penjualan extends BaseController
 {
-    protected $ModelPenjualan;
 
     public function __construct()
     {
@@ -55,20 +55,20 @@ class Penjualan extends BaseController
     public function InsertCart()
     {
         $cart = \Config\Services::cart();
-
-        $cart->insert([
+        $cart->insert(array(
             'id'      => $this->request->getPost('kode_produk'),
             'qty'     => $this->request->getPost('qty'),
             'price'   => $this->request->getPost('harga_jual'),
             'name'    => $this->request->getPost('nama_produk'),
-            'options' => [
+            'options' => array(
                 'nama_kategori' => $this->request->getPost('nama_kategori'),
                 'nama_satuan' => $this->request->getPost('nama_satuan'),
                 'modal' => $this->request->getPost('harga_beli'),
-            ]
-        ]);
+            )
+        ));
         return redirect()->to(base_url('Penjualan'));
     }
+
 
     public function ViewCart()
     {
@@ -98,42 +98,32 @@ class Penjualan extends BaseController
         $no_faktur = $this->ModelPenjualan->NoFaktur();
         $dibayar = str_replace(",", "", $this->request->getPost('dibayar'));
         $kembalian = str_replace(",", "", $this->request->getPost('kembalian'));
-
-        try {
-            // Simpan ke tbl_rinci_jual
-            foreach ($produk as $key => $value) {
-                $data = [
-                    'no_faktur' => $no_faktur,
-                    'kode_produk' => $value['id'],
-                    'harga' => $value['price'],
-                    'modal' => $value['options']['modal'],
-                    'qty' => $value['qty'],
-                    'total_harga' => $value['subtotal'],
-                    'untung' => ($value['price'] - $value['options']['modal']) * $value['qty']
-                ];
-                $this->ModelPenjualan->InsertRinciJual($data);
-            }
-
-            // Simpan ke tbl_jual
+        //simpan ke tbl_rinci_jual
+        foreach ($produk as $key => $value) {
             $data = [
                 'no_faktur' => $no_faktur,
-                'tgl_jual' => date('Y-m-d'),
-                'jam' => date('H:i:s'),
-                'grand_total' => $cart->total(),
-                'dibayar' => $dibayar,
-                'kembalian' => $kembalian,
-                'id_user' => session()->get('id_user'),
+                'kode_produk' => $value['id'],
+                'harga' => $value['price'],
+                'modal' => $value['options']['modal'],
+                'qty' => $value['qty'],
+                'total_harga' => $value['subtotal'],
+                'untung' => ($value['price'] - $value['options']['modal']) * $value['qty']
             ];
-            $this->ModelPenjualan->InsertJual($data);
-
-            // Hapus keranjang
-            $cart->destroy();
-
-            session()->setFlashdata('pesan', 'Transaksi Berhasil Disimpan !!!');
-        } catch (\Exception $e) {
-            session()->setFlashdata('pesan', 'Transaksi Gagal Disimpan: ' . $e->getMessage());
+            $this->ModelPenjualan->InsertRinciJual($data);
         }
-
+        //simpan ke tbl_jual
+        $data = [
+            'no_faktur' => $no_faktur,
+            'tgl_jual' => date('Y-m-d'),
+            'jam' => date('H:i:s'),
+            'grand_total' => $cart->total(),
+            'dibayar' => $dibayar,
+            'kembalian' => $kembalian,
+            'id_user' => session()->get('id_user'),
+        ];
+        $this->ModelPenjualan->InsertJual($data);
+        $cart->destroy();
+        session()->setFlashdata('pesan', 'Transkasi Berhasil Disimpan !!!');
         return redirect()->to('Penjualan');
     }
 }
