@@ -18,13 +18,25 @@ class Penjualan extends BaseController
     {
         $cart = \Config\Services::cart();
 
-        $data = [
-            'judul' => 'Penjualan',
-            'no_faktur' => $this->ModelPenjualan->NoFaktur(),
-            'cart' => $cart->contents(),
-            'grand_total' => $cart->total(),
-            'produk' => $this->ModelPenjualan->AllProduk(),
-        ];
+        if ($cart === null) {
+            // Tangani kasus di mana $cart adalah null
+            $data = [
+                'judul' => 'Penjualan',
+                'no_faktur' => $this->ModelPenjualan->NoFaktur(),
+                'cart' => [],
+                'grand_total' => 0,
+                'produk' => $this->ModelPenjualan->AllProduk(),
+            ];
+        } else {
+            $data = [
+                'judul' => 'Penjualan',
+                'no_faktur' => $this->ModelPenjualan->NoFaktur(),
+                'cart' => $cart->contents(),
+                'grand_total' => $cart->total(),
+                'produk' => $this->ModelPenjualan->AllProduk(),
+            ];
+        }
+
         return view('v_penjualan', $data);
     }
 
